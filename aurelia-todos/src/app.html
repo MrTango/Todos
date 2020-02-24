@@ -1,0 +1,22 @@
+<template>
+  <require from="./app.css"></require>
+  <div class="todoapp">
+    <header class="header">
+      <form submit.delegate="addTodo()">
+        <h1>todos</h1>
+        <input class="new-todo" placeholder="What needs to be done?" value.bind="newTodo" autofocus="">
+      </form>
+    </header>
+    <div class="main">
+      <ul class="todo-list">
+        <li repeat.for="todo of todos" class="${todo.isComplete ? 'completed' : ''}">
+          <div class="view">
+            <input class="toggle" type="checkbox" checked.bind="todo.isComplete" change.delegate="markCompleted(todo)">
+            <label>${todo.name}</label>
+            <button class="destroy" click.delegate="deleteTodo(todo.id)"></button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>
